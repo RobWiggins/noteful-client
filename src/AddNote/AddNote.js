@@ -17,15 +17,15 @@ export default class AddNote extends React.Component {
   setName(name) {  
     this.setState({
       noteName: name,
-    }, this.validateName)
+    }, this.validateName(name))
     //Why didn't this work if we don't pass name to validateName
   }
   
-  validateName() {
+  validateName(name) {
     let isValid = true;
     const validationMessages = {...this.state.validationMessages};
     
-    if (this.state.noteName.length === 0) {
+    if (name.length === 0) {
       validationMessages.name = 'Note requires a non-empty name'
       isValid = false;
     }
@@ -45,8 +45,11 @@ export default class AddNote extends React.Component {
     return (
       
         <div className='add-note'>
-          <form onSubmit={(e)=> this.context.addNote(e.target.noteName.value,
-            e.target.noteContent.value, e.target.folderSelection.value )}>
+          <form onSubmit={(e)=> {
+            e.preventDefault();
+            this.context.addNote(e.target.noteName.value,
+              e.target.noteContent.value, e.target.folderSelection.value)}
+          }>
             <label>Note Name
               {!this.state.isNameValid && (<p className='error'>{this.state.validationMessages.name}</p>)}
             </label>

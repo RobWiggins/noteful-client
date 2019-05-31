@@ -72,7 +72,7 @@ class App extends Component {
           
         }
 
-    addNote(title, content, folderId) {
+    addNote = (title, content, folderId) => {
 
       const dateObj = new Date(); 
       console.log(dateObj);
@@ -102,7 +102,7 @@ class App extends Component {
           .then(data => {
             this.setState({
               notes: [...this.state.notes, data]
-            }, console.log(this.state.notes))})
+            })})
           .catch(error => {
             console.log(error);
           });

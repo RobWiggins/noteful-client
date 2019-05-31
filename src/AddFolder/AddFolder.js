@@ -12,7 +12,10 @@ export default class AddFolder extends React.Component {
   render() {
     return (
       <div className='add-folder'>
-        <form onSubmit={(e)=> this.context.addFolder(e.target.folderInput.value)}>
+        <form onSubmit={(e)=> {
+          e.preventDefault();
+          this.context.addFolder(e.target.folderInput.value)
+        }}>
           <label>Folder Name</label>
           <input id='folderInput' type="text" />
           <button type='submit' disabled={false}>Submit</button>
