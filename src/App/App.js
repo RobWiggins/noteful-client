@@ -11,7 +11,6 @@ import config from '../config';
 import './App.css';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
-import ErrorPage from '../ErrorPage';
 
 class App extends Component {
     state = {
@@ -75,7 +74,6 @@ class App extends Component {
     addNote = (title, content, folderId) => {
 
       const dateObj = new Date(); 
-      console.log(dateObj);
 
       const noteId = cuid();        
       const body = JSON.stringify( {

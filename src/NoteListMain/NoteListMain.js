@@ -50,12 +50,12 @@ export default class NoteListMain extends React.Component {
   }
 }
 
-// NoteListMain.propTypes = {
-//   match: PropTypes.shape({
-//     params: PropTypes.shape({
-//       folderId: PropTypes.string
-//     }),
-//     path: PropTypes.string,
-//     url: PropTypes.string,
-//   })
-// } 
+NoteListMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      folderId: PropTypes.string
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  })
+} 
