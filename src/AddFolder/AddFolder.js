@@ -5,6 +5,10 @@ export default class AddFolder extends React.Component {
 
   static contextType = ApiContext;
   
+
+  // what sort of validation for folder?? empty name??
+
+
   render() {
     return (
       <div className='add-folder'>

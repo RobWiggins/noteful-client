@@ -10,7 +10,7 @@ import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
 import AddFolder from '../AddFolder/AddFolder';
-
+import AddNote from '../AddNote/AddNote'
 
 class App extends Component {
     state = {
@@ -43,13 +43,10 @@ class App extends Component {
         const folderId = cuid();
         console.log(folderName);
         
-
         const body = JSON.stringify( {
             id: folderId,
             name: folderName
         });
-
-        
 
         const options = { 
           method: 'POST', 
@@ -73,7 +70,44 @@ class App extends Component {
           });
           
         }
-          
+
+    addNote(title, content, folderId) {
+
+      const dateObj = new Date(); 
+      console.log(dateObj);
+
+      const noteId = cuid();        
+      const body = JSON.stringify( {
+          id: noteId,
+          name: title,
+          modified: dateObj,
+          folderId,
+          content,
+        });
+
+        const options = { 
+          method: 'POST', 
+          headers: { 'content-type': 'application/json' },
+          body,
+        };
+
+        fetch(`${config.API_ENDPOINT}/notes`, options)
+          .then( response => {
+            if (!response.ok) {
+                throw new Error(response.status)
+            }
+            return response.json();
+          })
+          .then(data => {
+            this.setState({
+              notes: [...this.state.notes, data]
+            }, console.log(this.state.notes))})
+          .catch(error => {
+              // log or print element to console containing error.message
+          });
+
+
+    }
 
     handleDeleteNote = noteId => {
         this.setState({
@@ -112,6 +146,7 @@ class App extends Component {
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
+                <Route path="/add-note" component={AddNote} />
             </>
         );
     }
@@ -121,7 +156,8 @@ class App extends Component {
             notes: this.state.notes,
             folders: this.state.folders,
             deleteNote: this.handleDeleteNote,
-            addFolder: this.addFolder
+            addFolder: this.addFolder,
+            addNote: this.addNote
         };
         return (
             <ApiContext.Provider value={value}>
