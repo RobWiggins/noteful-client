@@ -6,7 +6,13 @@ export default class ErrorPage extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
+    console.log(error);
+
     return {error};
+  }
+
+  componentDidCatch(error){
+    console.log(error);
   }
 
   render() {

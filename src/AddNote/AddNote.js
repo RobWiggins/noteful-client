@@ -1,6 +1,5 @@
 import React from 'react';
 import ApiContext from '../ApiContext';
-import ErrorPage from '../ErrorPage';
 
 export default class AddNote extends React.Component {
 
@@ -18,15 +17,15 @@ export default class AddNote extends React.Component {
   setName(name) {  
     this.setState({
       noteName: name,
-    }, this.validateName(name))
+    }, this.validateName)
     //Why didn't this work if we don't pass name to validateName
   }
   
-  validateName(name) {
+  validateName() {
     let isValid = true;
     const validationMessages = {...this.state.validationMessages};
     
-    if (name.length === 0) {
+    if (this.state.noteName.length === 0) {
       validationMessages.name = 'Note requires a non-empty name'
       isValid = false;
     }
@@ -44,7 +43,7 @@ export default class AddNote extends React.Component {
     });
 
     return (
-      <ErrorPage>
+      
         <div className='add-note'>
           <form onSubmit={(e)=> this.context.addNote(e.target.noteName.value,
             e.target.noteContent.value, e.target.folderSelection.value )}>
@@ -64,7 +63,7 @@ export default class AddNote extends React.Component {
             <button type='submit' disabled={!this.state.isNameValid}>Submit</button>
           </form>
         </div>
-      </ErrorPage>
+     
     )
   }
 

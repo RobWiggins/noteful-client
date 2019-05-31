@@ -15,9 +15,9 @@ library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble)
 
 ReactDOM.render(
   <BrowserRouter>
-  <ErrorPage>
+    <ErrorPage>
     <App />
-  </ErrorPage>
+    </ErrorPage>
   </BrowserRouter>,
   document.getElementById('root')
 )

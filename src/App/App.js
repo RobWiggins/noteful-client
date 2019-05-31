@@ -10,7 +10,8 @@ import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
 import AddFolder from '../AddFolder/AddFolder';
-import AddNote from '../AddNote/AddNote'
+import AddNote from '../AddNote/AddNote';
+import ErrorPage from '../ErrorPage';
 
 class App extends Component {
     state = {
@@ -66,7 +67,7 @@ class App extends Component {
               folders: [...this.state.folders, data]
             }, console.log(this.state.folders))})
           .catch(error => {
-              // log or print element to console containing error.message
+              console.log(error);
           });
           
         }
@@ -103,7 +104,7 @@ class App extends Component {
               notes: [...this.state.notes, data]
             }, console.log(this.state.notes))})
           .catch(error => {
-              // log or print element to console containing error.message
+            console.log(error);
           });
 
 
@@ -160,17 +161,20 @@ class App extends Component {
             addNote: this.addNote
         };
         return (
+            
             <ApiContext.Provider value={value}>
-                <div className="App">
-                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
-                    <header className="App__header">
-                        <h1>
-                            <Link to="/">Noteful</Link>{' '}
-                            <FontAwesomeIcon icon="check-double" />
-                        </h1>
-                    </header>
-                    <main className="App__main">{this.renderMainRoutes()}</main>
-                </div>
+                
+                    <div className="App">
+                        <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                        <header className="App__header">
+                            <h1>
+                                <Link to="/">Noteful</Link>{' '}
+                                <FontAwesomeIcon icon="check-double" />
+                            </h1>
+                        </header>
+                        <main className="App__main">{this.renderMainRoutes()}</main>
+                    </div>
+                
             </ApiContext.Provider>
         );
     }
