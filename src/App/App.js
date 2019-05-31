@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
+import cuid from 'cuid';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
@@ -8,6 +9,8 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
+import AddFolder from '../AddFolder/AddFolder';
+
 
 class App extends Component {
     state = {
@@ -34,6 +37,17 @@ class App extends Component {
             .catch(error => {
                 console.error({error});
             });
+    }
+
+    addFolder = (folderName) => {
+        const folderId = cuid();
+        console.log(folderName);
+        this.setState({
+            folders: [...this.state.folders, {name: folderName, id: folderId}]
+        })
+
+        fetch()
+       
     }
 
     handleDeleteNote = noteId => {
@@ -72,6 +86,7 @@ class App extends Component {
                     />
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/add-folder" component={AddFolder} />
             </>
         );
     }
@@ -80,7 +95,8 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.addFolder
         };
         return (
             <ApiContext.Provider value={value}>
