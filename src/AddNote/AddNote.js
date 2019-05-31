@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../ApiContext';
+import ErrorPage from '../ErrorPage';
 
 export default class AddNote extends React.Component {
 
@@ -43,25 +44,27 @@ export default class AddNote extends React.Component {
     });
 
     return (
-      <div className='add-note'>
-        <form onSubmit={(e)=> this.context.addNote(e.target.noteName.value,
-          e.target.noteContent.value, e.target.folderSelection.value )}>
-          <label>Note Name
-            {!this.state.isNameValid && (<p className='error'>{this.state.validationMessages.name}</p>)}
-          </label>
-          <input id='noteName' type="text" onChange={(e) => this.setName(e.target.value)}/>
+      <ErrorPage>
+        <div className='add-note'>
+          <form onSubmit={(e)=> this.context.addNote(e.target.noteName.value,
+            e.target.noteContent.value, e.target.folderSelection.value )}>
+            <label>Note Name
+              {!this.state.isNameValid && (<p className='error'>{this.state.validationMessages.name}</p>)}
+            </label>
+            <input id='noteName' type="text" onChange={(e) => this.setName(e.target.value)}/>
 
-          <label>Note Content</label>
-          <textarea id='noteContent' type="text" />
+            <label>Note Content</label>
+            <textarea id='noteContent' type="text" />
 
-          <label>Select Folder</label>
-          <select id='folderSelection' required >
-            {folderSelections}
-          </select>
+            <label>Select Folder</label>
+            <select id='folderSelection' required >
+              {folderSelections}
+            </select>
 
-          <button type='submit' disabled={!this.state.isNameValid}>Submit</button>
-        </form>
-      </div>
+            <button type='submit' disabled={!this.state.isNameValid}>Submit</button>
+          </form>
+        </div>
+      </ErrorPage>
     )
   }
 
