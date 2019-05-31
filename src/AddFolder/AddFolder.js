@@ -2,7 +2,9 @@ import React from 'react';
 import ApiContext from '../ApiContext';
 
 export default class AddFolder extends React.Component {
+
   static contextType = ApiContext;
+  
   render() {
     return (
       <div className='add-folder'>

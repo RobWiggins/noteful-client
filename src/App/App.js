@@ -42,13 +42,38 @@ class App extends Component {
     addFolder = (folderName) => {
         const folderId = cuid();
         console.log(folderName);
-        this.setState({
-            folders: [...this.state.folders, {name: folderName, id: folderId}]
-        })
+        
 
-        fetch()
-       
-    }
+        const body = JSON.stringify( {
+            id: folderId,
+            name: folderName
+        });
+
+        
+
+        const options = { 
+          method: 'POST', 
+          headers: { 'content-type': 'application/json' },
+          body,
+        };
+
+        fetch(`${config.API_ENDPOINT}/folders`, options)
+          .then( response => {
+            if (!response.ok) {
+                throw new Error(response.status)
+            }
+            return response.json();
+          })
+          .then(data => {
+            this.setState({
+              folders: [...this.state.folders, data]
+            }, console.log(this.state.folders))})
+          .catch(error => {
+              // log or print element to console containing error.message
+          });
+          
+        }
+          
 
     handleDeleteNote = noteId => {
         this.setState({
