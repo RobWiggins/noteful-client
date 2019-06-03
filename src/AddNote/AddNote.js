@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../ApiContext';
+import './AddNote.css'
 
 export default class AddNote extends React.Component {
 
@@ -17,15 +18,15 @@ export default class AddNote extends React.Component {
   setName(name) {  
     this.setState({
       noteName: name,
-    }, this.validateName)
+    }, this.validateName(name))
     //Why didn't this work if we don't pass name to validateName
   }
   
-  validateName() {
+  validateName(name) {
     let isValid = true;
     const validationMessages = {...this.state.validationMessages};
     
-    if (this.state.noteName.length === 0) {
+    if (name.length === 0) {
       validationMessages.name = 'Note requires a non-empty name'
       isValid = false;
     }
@@ -45,17 +46,20 @@ export default class AddNote extends React.Component {
     return (
       
         <div className='add-note'>
-          <form onSubmit={(e)=> this.context.addNote(e.target.noteName.value,
-            e.target.noteContent.value, e.target.folderSelection.value )}>
-            <label>Note Name
+          <form onSubmit={(e)=> {
+            e.preventDefault();
+            this.context.addNote(e.target.noteName.value,
+              e.target.noteContent.value, e.target.folderSelection.value)}
+          }>
+            <label htmlFor='noteName'>Note Name: 
               {!this.state.isNameValid && (<p className='error'>{this.state.validationMessages.name}</p>)}
             </label>
             <input id='noteName' type="text" onChange={(e) => this.setName(e.target.value)}/>
 
-            <label>Note Content</label>
+            <label htmlFor='noteContent'>Note Content: </label>
             <textarea id='noteContent' type="text" />
 
-            <label>Select Folder</label>
+            <label htmlFor='folderSelection'>Select Folder: </label>
             <select id='folderSelection' required >
               {folderSelections}
             </select>

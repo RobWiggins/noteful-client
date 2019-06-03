@@ -41,7 +41,7 @@ class App extends Component {
 
     addFolder = (folderName) => {
         const folderId = cuid();
-        console.log(folderName);
+    
         
         const body = JSON.stringify( {
             id: folderId,
@@ -64,16 +64,15 @@ class App extends Component {
           .then(data => {
             this.setState({
               folders: [...this.state.folders, data]
-            }, console.log(this.state.folders))})
+            }, console.log(`STATE: ${this.state.folders}`))})
           .catch(error => {
               console.log(error);
           }); 
         }
 
-    addNote(title, content, folderId) {
+    addNote = (title, content, folderId) => {
 
       const dateObj = new Date(); 
-      console.log(dateObj);
 
       const noteId = cuid();        
       const body = JSON.stringify( {

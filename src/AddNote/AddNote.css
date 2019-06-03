@@ -1,0 +1,11 @@
+* {
+  color: white;
+}
+
+button {
+  background-color: black;
+}
+
+input, textarea, select{
+  color: black;
+}

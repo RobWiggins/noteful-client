@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../ApiContext';
+import './AddFolder.css'
 
 export default class AddFolder extends React.Component {
 
@@ -12,10 +13,13 @@ export default class AddFolder extends React.Component {
   render() {
     return (
       <div className='add-folder'>
-        <form onSubmit={(e)=> this.context.addFolder(e.target.folderInput.value)}>
-          <label>Folder Name</label>
+        <form onSubmit={(e)=> {
+          e.preventDefault();
+          this.context.addFolder(e.target.folderInput.value)
+        }}>
+          <label htmlFor='folderInput'>Folder Name: </label>
           <input id='folderInput' type="text" />
-          <button type='submit' disabled={false}>Submit</button>
+          <button type='submit'>Submit</button>
         </form>
       </div>
     )
