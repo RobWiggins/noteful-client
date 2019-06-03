@@ -11,7 +11,6 @@ import config from '../config';
 import './App.css';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
-import ErrorPage from '../ErrorPage';
 
 class App extends Component {
     state = {
@@ -68,8 +67,7 @@ class App extends Component {
             }, console.log(this.state.folders))})
           .catch(error => {
               console.log(error);
-          });
-          
+          }); 
         }
 
     addNote(title, content, folderId) {
@@ -100,9 +98,11 @@ class App extends Component {
             return response.json();
           })
           .then(data => {
+              console.log(this.state.notes);
             this.setState({
               notes: [...this.state.notes, data]
-            }, console.log(this.state.notes))})
+            })
+        })
           .catch(error => {
             console.log(error);
           });
