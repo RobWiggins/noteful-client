@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Renders UI as expected 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "addFolder": [Function],
+      "addNote": [Function],
+      "deleteNote": [Function],
+      "folders": Array [],
+      "notes": Array [],
+    }
+  }
+>
+  <div
+    className="App"
+  >
+    <nav
+      className="App__nav"
+    >
+      <Route
+        component={[Function]}
+        exact={true}
+        key="/"
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        key="/folder/:folderId"
+        path="/folder/:folderId"
+      />
+      <Route
+        component={[Function]}
+        path="/note/:noteId"
+      />
+      <Route
+        component={[Function]}
+        path="/add-folder"
+      />
+      <Route
+        component={[Function]}
+        path="/add-note"
+      />
+    </nav>
+    <header
+      className="App__header"
+    >
+      <h1>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Noteful
+        </Link>
+         
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon="check-double"
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+      </h1>
+    </header>
+    <main
+      className="App__main"
+    >
+      <Route
+        component={[Function]}
+        exact={true}
+        key="/"
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        key="/folder/:folderId"
+        path="/folder/:folderId"
+      />
+      <Route
+        component={[Function]}
+        path="/note/:noteId"
+      />
+      <Route
+        component={[Function]}
+        path="/add-folder"
+      />
+      <Route
+        component={[Function]}
+        path="/add-note"
+      />
+    </main>
+  </div>
+</ContextProvider>
+`;
