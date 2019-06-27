@@ -16,13 +16,7 @@ export default class AddNote extends React.Component {
   }
 
   setName(name) {  
-    this.setState({
-      noteName: name,
-    }, this.validateName(name))
-    //Why didn't this work if we don't pass name to validateName
-  }
-  
-  validateName(name) {
+
     let isValid = true;
     const validationMessages = {...this.state.validationMessages};
     
@@ -34,7 +28,9 @@ export default class AddNote extends React.Component {
     this.setState({
       isNameValid: isValid,
       validationMessages,
+      noteName: name,
     })
+
   }
 
   render() {
