@@ -36,7 +36,7 @@ export default class AddNote extends React.Component {
   render() {
 
     const folderSelections = this.context.folders.map((folder, index) => {
-      return <option key={index} value={folder.id}>{folder.name}</option>;
+      return <option key={index} value={folder.id}>{folder.folder_name}</option>;
     });
 
     return (

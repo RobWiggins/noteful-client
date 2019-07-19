@@ -17,16 +17,20 @@ export default class Note extends React.Component {
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    const body = JSON.stringify({
+      id: noteId
+    });
+
+    const options = {
       method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-    })
+      headers: { 'content-type': 'application/json' },
+      body,
+    };
+
+    fetch(`${config.API_ENDPOINT}/notes`, options)
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
       })
       .then(() => {
         this.context.deleteNote(noteId)
