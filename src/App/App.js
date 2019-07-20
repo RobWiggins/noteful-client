@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import cuid from 'cuid';
@@ -77,9 +78,9 @@ class App extends Component {
 
     const noteId = cuid();
     const body = JSON.stringify({
-      id: noteId, // TODO perhaps unnescessary... since defaultId... but wont break because not parsing out in server
-      title, // TODO may need to fix this name vs title discrepancy here...
-      modified: dateObj, // same here
+      id: noteId, 
+      title,
+      modified: dateObj,
       folderId,
       content,
     });

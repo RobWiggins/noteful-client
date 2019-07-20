@@ -65,7 +65,7 @@ exports[`Note component renders the Note given props 1`] = `
   >
     <Link
       replace={false}
-      to="/note/a"
+      to="/note/3"
     >
       test-class-name
     </Link>

@@ -8,7 +8,7 @@ import './Note.css'
 import PropTypes from 'prop-types'
 
 export default class Note extends React.Component {
-  static defaultProps ={
+  static defaultProps = {
     onDeleteNote: () => {},
   }
   static contextType = ApiContext;
@@ -76,7 +76,7 @@ export default class Note extends React.Component {
 
 Note.propTypes = {
   deleteNote: PropTypes.func,
-  id: PropTypes.string, // TODO changed this to number
+  id: PropTypes.number, // TODO changed this to number
   name: PropTypes.string,
   modified: PropTypes.string,
 }
