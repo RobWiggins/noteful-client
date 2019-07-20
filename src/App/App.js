@@ -98,7 +98,6 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(this.state.notes);
         this.setState({
           notes: [...this.state.notes, data],
         });
@@ -111,8 +110,6 @@ class App extends Component {
   handleDeleteNote = noteId => {
     // send noteId as body in a delete requests to /folders (best practice would probably be to do /notes/:noteId but to hack it)
     const remainingNotes = this.state.notes.filter(note => note.id != noteId);
-    console.log('remainingNotes: ', remainingNotes);
-    console.log('noteId: ', noteId);
     this.setState({
       notes: [...remainingNotes],
     });
