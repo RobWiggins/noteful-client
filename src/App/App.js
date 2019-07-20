@@ -65,7 +65,6 @@ class App extends Component {
           {
             folders: [...this.state.folders, data],
           },
-          console.log(`STATE: ${this.state.folders}`)
         );
       })
       .catch(error => {
