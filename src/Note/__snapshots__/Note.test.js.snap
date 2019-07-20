@@ -107,7 +107,7 @@ exports[`Note component renders the Note given props 1`] = `
       <span
         className="Date"
       >
-        15th Jan 2019
+        2nd Jan 2019
       </span>
     </div>
   </div>
