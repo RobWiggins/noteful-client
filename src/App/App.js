@@ -109,7 +109,6 @@ class App extends Component {
   };
 
   handleDeleteNote = noteId => {
-    // send noteId as body in a delete requests to /folders (best practice would probably be to do /notes/:noteId but to hack it)
     const remainingNotes = this.state.notes.filter(note => note.id != noteId);
     this.setState({
       notes: [...remainingNotes],
